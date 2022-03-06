@@ -163,16 +163,7 @@ function App() {
               Thêm công việc
             </button>
             <Search handleFilter={handleFilter} handleSearch={handleSearch2}/>
-            <ListTask
-              tasks={tasks}
-              handleStatus={handleStatus}
-              deleteTask={deleteTask}
-              handleFilters={handleFilter}
-              handleSearch={handleSearch}
-              search={search}
-              handleOpen={handleOpen}
-              
-            />
+            i
           </div>
         </div>
       </div>

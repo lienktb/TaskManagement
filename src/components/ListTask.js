@@ -47,7 +47,7 @@ export default function ListTask({
           <td></td>
         </tr>
 
-        {tasks.map((item, index) => (
+        {tasks ? tasks.map((item, index) => (
           <Task
             key={index}
             item={item}
@@ -56,7 +56,7 @@ export default function ListTask({
             deleteTask={deleteTask}
             handleOpen={handleOpen}
           />
-        ))}
+        )): ""}
       </tbody>
     </table>
   );
