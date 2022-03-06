@@ -6,15 +6,21 @@ import ListTask from "./components/ListTask";
 import { useEffect, useState } from "react";
 import { stringify, v4 as uuidv4 } from "uuid";
 
-const t = localStorage.getItem("tasks");
-
 function App() {
-  const [tasks, setTasks] = useState(JSON.parse(t));
+  const [tasks, setTasks] = useState([]);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [taskReplace, setTaskReplace] = useState(tasks);
   const [type, setType] = useState();
 
+  useEffect(()=>{
+    const check = localStorage.getItem("tasks");
+    if(check){
+      setTasks(JSON.parse(check));
+    }else{
+      localStorage.setItem("tasks",JSON.stringify([]));
+    }
+  },[])
   const addTask = (task) => {
     const id = uuidv4();
     task = { ...task, id: id };
@@ -163,7 +169,16 @@ function App() {
               Thêm công việc
             </button>
             <Search handleFilter={handleFilter} handleSearch={handleSearch2}/>
-            i
+            <ListTask
+              tasks={tasks}
+              handleStatus={handleStatus}
+              deleteTask={deleteTask}
+              handleFilters={handleFilter}
+              handleSearch={handleSearch}
+              search={search}
+              handleOpen={handleOpen}
+              
+            />
           </div>
         </div>
       </div>
