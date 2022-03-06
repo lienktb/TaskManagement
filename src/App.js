@@ -26,7 +26,7 @@ function App() {
     task = { ...task, id: id };
     // console.log(task)
     const arr = [...tasks, task];
-    console.log(arr);
+    // console.log(arr);
     setTasks(arr);
     localStorage.setItem("tasks", JSON.stringify(arr));
     setTaskReplace(tasks);
@@ -74,15 +74,15 @@ function App() {
       case "hide":
         setTasks(
           newTasks
-            .filter((item) => !item.status)
-            .concat(newTasks.filter((i) => i.status))
+            .filter((item) => item.status=="false")
+            .concat(newTasks.filter((i) => i.status=="true"))
         );
         break;
       case "show":
         setTasks(
           newTasks
-            .filter((item) => item.status)
-            .concat(newTasks.filter((i) => !i.status))
+            .filter((item) => item.status=="true")
+            .concat(newTasks.filter((i) => i.status=="false"))
         );
         break;
       case "1":
@@ -99,7 +99,7 @@ function App() {
     }
   };
   const handleStatus = (id) => {
-    console.log(id);
+    // console.log(id);
     const newTasks = tasks.map((item) => {
       if (item.id == id) {
         const temp = !(item.status=="true");
@@ -121,13 +121,13 @@ function App() {
 
   const handleSearch =(input)=>{
     setSearch(input)
-    console.log(input)
+    // console.log(input)
     const newTasks = search ? taskReplace.filter(item=>item.name.toLowerCase().includes(input.toLowerCase())) : tasks;
     setTasks(newTasks)
   }
   
   const handleSearch2 =(input)=>{
-    console.log()
+    // console.log()
     const newTasks = input!=null ? taskReplace.filter(item=>item.name.toLowerCase().includes(input.toLowerCase())):tasks;
     // setTaskReplace(tasks)
     setTasks(newTasks)
@@ -135,7 +135,7 @@ function App() {
 
   const handleOpen = (type)=>{
     setType(type);
-    console.log(type);
+    // console.log(type);
     type.type=="Thêm" ? setOpen(!open): setOpen(true);
   }
 

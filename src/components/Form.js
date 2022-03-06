@@ -9,7 +9,7 @@ export default function Form({ handleOpen, addTask, editTask,  type}) {
       setTask(item)
     }
   },[type])
-  console.log(task)
+  // console.log(task)
   const handleChange = (e)=>{
     e.preventDefault();
     const {name, value} = e.target;
